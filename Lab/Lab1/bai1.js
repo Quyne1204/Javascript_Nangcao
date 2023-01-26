@@ -1,47 +1,47 @@
 
 //Coding Challenge #1
 const game = {
-    team1: 'Bayern Munich',
-    team2: 'Borrussia Dortmund',
-    players: [
-      [
-        'Neuer',
-        'Pavard',
-        'Martinez',
-        'Alaba',
-        'Davies',
-        'Kimmich',
-        'Goretzka',
-        'Coman',
-        'Muller',
-        'Gnarby',
-        'Lewandowski',
-      ],
-      [
-        'Burki',
-        'Schulz',
-        'Hummels',
-        'Akanji',
-        'Hakimi',
-        'Weigl',
-        'Witsel',
-        'Hazard',
-        'Brandt',
-        'Sancho',
-        'Gotze',
-      ],
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
     ],
-    score: '4:0',
-    scored: ['Davies', 'Muller', 'Lewandowski', 'Kimmich'],
-    date: 'Nov 9th, 2037',
-    odds: {
-      team1: 1.33,
-      x: 3.25,
-      team2: 6.5,
-    },
-  };
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Gnarby', 'Lewandowski', 'Hummels', 'Lewandowski'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
 
-  console.log(`Bai tap 1`);
+console.log(`Bai tap 1`);
 //1. Tạo ra 1 mảng cầu thủ cho mỗi đội (variables 'players1' and 'players2')
 const [players1, players2] = game.players;
 
@@ -52,7 +52,7 @@ const [gk1, ...fieldPlayers1] = players1;
 const [gk2, ...fieldPlayers2] = players2;
 
 //3. Tạo 1 mảng 'allPlayers' bao gồm toàn bộ 22 cầu thủ trên sân
-const allPlayers = [...players1,...players2];
+const allPlayers = [...players1, ...players2];
 
 //4. Trong trận đấu, Bayern Munich (team 1) sử dụng 3 quyền thay người. Hãy tạo 1
 // mảng mới ('players1Final') gôm các cầu thủ ban đầu của Bayern rồi thêm vào
@@ -62,11 +62,11 @@ const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
 
 //5. Dựa vào object game.odds, tạo một biến thể hiện tỉ lệ kết quả trận đấu (gọi là
 // 'team1', 'draw' và 'team2')
-const {odds: {team1, x: draw, team2}} = game;
+const { odds: { team1, x: draw, team2 } } = game;
 
 //6. Viết 1 hàm ('printGoals') nhận vào 1 số tên cầu thủ đã ghi bàn (sử dụng toán tử
 // spread) và in ra console tên những cầu thủ đó cùng với số cầu thủ đã ghi bàn
-const printGoals = function(...players){
+const printGoals = function (...players) {
   console.log(players);
   console.log(`${players.length} bàn thắng đã được ghi.`);
   console.log(`${players} là các cầu thủ đã ghi bàn.`);
@@ -81,11 +81,11 @@ printGoals(...game.scored);
 team1 < team2 && console.log('Team 1 giành chiến thắng ');
 team1 > team2 && console.log('Team 2 giành chiến thắng');
 
-
+///////////////////////////////////////////////////////////////////////////////////////////////
 console.log(`Bai tap 2`);
 //1. Lặp mảng game.scored array và in ra cầu thủ cùng với số bàn thắng đã ghi (Ví
 // dụ: "Goal 1: Lewandowski")
-for(const [i, player] of game.scored.entries()){
+for (const [i, player] of game.scored.entries()) {
   console.log(`Goal ${i + 1}: ${player}`);
 };
 
@@ -94,7 +94,7 @@ for(const [i, player] of game.scored.entries()){
 // nhớ)
 const odds = Object.values(game.odds);
 let average = 0;
-for(const odd of odds){
+for (const odd of odds) {
   average += odd;
 }
 average /= odds.length;
@@ -106,7 +106,8 @@ console.log(average);
 // Tỉ lệ thắng của Borrussia Dortmund: 6.5
 // Lấy ra tên đội bóng trực tiếp từ object 'game', bạn không nên "hardcode" tỉ lệ
 // thắng của mỗi đội (ngoại trừ trường hợp 2 đội hòa nhau)
-for(const [team, odd] of Object.entries(game.odds)){
-  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
-  console.log(`Odd of ${teamStr} ${odd}`);
+for (const [team, odd] of Object.entries(game.odds)) {
+  const teamStr = team === 'x' ? 'hòa draw' : `thắng của ${game[team]}`;
+  console.log(`Tỉ lệ ${teamStr} : ${odd}`);
 }
+
